@@ -19,6 +19,7 @@ public class RegistrationService {
     private final UserRepo userRepo;
     private final EventRepo eventRepo;
     private final RegistrationRepo regRepo;
+    private final DashboardWebSocketService dashboardWebSocketService;
 
     public Registration register(Long userId, Long eventId) {
 
@@ -30,7 +31,12 @@ public class RegistrationService {
         Event event = eventRepo.findById(eventId).orElseThrow();
 
         Registration reg = new Registration();
+        reg.setUser(user);
+        reg.setEvent(event);
 
-        return regRepo.save(reg);
+        Registration newReg = regRepo.save(reg);
+
+        dashboardWebSocketService.sendUpdate();
+        return newReg;
     }
 }

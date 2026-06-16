@@ -17,6 +17,7 @@ public class AttendanceService {
 
     private final AttendanceRepo attendanceRepo;
     private final UserRepo userRepo;
+    private final DashboardWebSocketService wsService;
 
     public String checkIn(Long userId) {
 
@@ -32,6 +33,7 @@ public class AttendanceService {
 
         attendanceRepo.save(attendance);
 
+        wsService.sendUpdate();
         return "Check-in successful";
     }
 }

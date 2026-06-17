@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const apiClient = axios.create({
-    baseURL: "http://localhost:8080/api",
+    baseURL: import.meta.env.VITE_API_URL,
     headers: { "Content-Type": "application/json" },
 });
 
@@ -20,4 +20,4 @@ export async function fetchStats() {
     return res.data;
 }
 
-export const WS_URL = "ws://localhost:8080/ws/attendance";
+export const WS_URL = import.meta.env.VITE_WS_URL;

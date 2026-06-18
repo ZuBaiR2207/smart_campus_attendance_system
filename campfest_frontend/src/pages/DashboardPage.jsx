@@ -73,7 +73,7 @@ export default function DashboardPage() {
                                 🎓
                             </div>
                             <h1 className="text-2xl font-bold bg-gradient-to-r from-gray-900 via-gray-700 to-gray-500 bg-clip-text text-transparent tracking-tight">
-                                ALFA IT Festival 2025
+                                ALFA IT Festival 2026
                             </h1>
                         </div>
                         <p className="text-sm text-gray-500 ml-12">Real-time attendance dashboard</p>
@@ -120,7 +120,7 @@ export default function DashboardPage() {
 
                 {/* Footer */}
                 <p className="text-center text-xs text-gray-400 mt-8">
-                    ALFA IT Festival 2025 · Smart Campus Attendance System
+                    ALFA IT Festival 2026 · Smart Campus Attendance System · Developed by Zubair
                 </p>
             </div>
         </div>

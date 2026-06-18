@@ -96,8 +96,8 @@ export default function RegisterPage() {
                             required
                             value={form.name}
                             onChange={handleChange}
-                            placeholder="e.g. Ahmad Razif"
-                            className="w-full rounded-xl border border-gray-300 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                            placeholder=""
+                            className="w-full rounded-xl border border-gray-300 px-4 py-3 text-sm text-gray-900 bg-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
                         />
                     </div>
 
@@ -111,8 +111,8 @@ export default function RegisterPage() {
                             required
                             value={form.email}
                             onChange={handleChange}
-                            placeholder="you@student.alfa.edu.my"
-                            className="w-full rounded-xl border border-gray-300 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                            placeholder="Enter valid email address"
+                            className="w-full rounded-xl border border-gray-300 px-4 py-3 text-sm text-gray-900 bg-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
                         />
                     </div>
 
@@ -124,7 +124,7 @@ export default function RegisterPage() {
                             name="department"
                             value={form.department}
                             onChange={handleChange}
-                            className="w-full rounded-xl border border-gray-300 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent bg-white"
+                            className="w-full rounded-xl border border-gray-300 px-4 py-3 text-sm text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
                         >
                             <option value="">Select department</option>
                             {DEPARTMENTS.map((d) => (

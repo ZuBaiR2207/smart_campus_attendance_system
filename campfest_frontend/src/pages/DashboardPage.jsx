@@ -57,47 +57,71 @@ export default function DashboardPage() {
     }, []);
 
     return (
-        <div className="min-h-screen bg-gray-50 px-6 py-8">
-            <div className="max-w-5xl mx-auto">
-                <div className="flex items-center justify-between mb-6">
+        <div className="min-h-screen bg-slate-50 px-6 py-8">
+            {/* Subtle dot-grid overlay */}
+            <div className="fixed inset-0 bg-[radial-gradient(rgba(99,102,241,0.07)_1px,transparent_1px)] bg-[size:32px_32px] pointer-events-none" />
+            {/* Ambient glow blobs */}
+            <div className="fixed top-0 left-1/4 w-96 h-96 bg-indigo-300/25 rounded-full blur-3xl pointer-events-none" />
+            <div className="fixed bottom-0 right-1/4 w-96 h-96 bg-purple-300/25 rounded-full blur-3xl pointer-events-none" />
+
+            <div className="max-w-6xl mx-auto relative">
+                {/* Header */}
+                <div className="flex items-center justify-between mb-8">
                     <div>
-                        <h1 className="text-2xl font-semibold text-gray-900">
-                            🎓 ALFA IT Festival — Live Attendance
-                        </h1>
-                        <p className="text-sm text-gray-500">Real-time check-in dashboard</p>
+                        <div className="flex items-center gap-3 mb-1">
+                            <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-lg shadow-lg shadow-indigo-500/30">
+                                🎓
+                            </div>
+                            <h1 className="text-2xl font-bold bg-gradient-to-r from-gray-900 via-gray-700 to-gray-500 bg-clip-text text-transparent tracking-tight">
+                                ALFA IT Festival 2025
+                            </h1>
+                        </div>
+                        <p className="text-sm text-gray-500 ml-12">Real-time attendance dashboard</p>
                     </div>
-                    <div className="flex items-center gap-2">
-                        <span
-                            className={`w-2 h-2 rounded-full ${connected ? "bg-green-500 animate-pulse" : "bg-gray-300"
-                                }`}
-                        />
-                        <span className="text-xs text-gray-500">
-                            {connected ? "Live" : "Connecting..."}
-                        </span>
+                    <div className={`flex items-center gap-2 px-3.5 py-1.5 rounded-full border text-xs font-medium transition-all duration-500 ${
+                        connected
+                            ? "bg-green-50 border-green-200 text-green-600"
+                            : "bg-gray-100 border-gray-200 text-gray-400"
+                    }`}>
+                        <span className={`w-1.5 h-1.5 rounded-full ${connected ? "bg-green-500 animate-pulse" : "bg-gray-400"}`} />
+                        {connected ? "Live" : "Connecting…"}
                     </div>
                 </div>
 
+                {/* Stat Cards */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
                     <StatCard
                         label="Total Checked In"
                         value={stats?.totalAttendees ?? "—"}
+                        icon="👥"
+                        accent="indigo"
                     />
                     <StatCard
                         label="Departments"
                         value={Object.keys(stats?.departmentBreakdown || {}).length}
+                        icon="🏛️"
+                        accent="purple"
                     />
                     <StatCard
-                        label="Status"
+                        label="Connection"
                         value={connected ? "Live" : "Offline"}
+                        icon={connected ? "📡" : "⚠️"}
+                        accent={connected ? "green" : "red"}
                     />
                 </div>
 
+                {/* Charts */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                     <HourlyChart data={stats?.hourlyBreakdown || []} />
                     <DepartmentBars data={stats?.departmentBreakdown} />
                 </div>
 
                 <RecentList attendees={stats?.recentAttendees} />
+
+                {/* Footer */}
+                <p className="text-center text-xs text-gray-400 mt-8">
+                    ALFA IT Festival 2025 · Smart Campus Attendance System
+                </p>
             </div>
         </div>
     );

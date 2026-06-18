@@ -142,7 +142,7 @@ export default function RegisterPage() {
                     <button
                         type="submit"
                         disabled={status === "loading"}
-                        className="w-full bg-primary text-white font-medium rounded-xl py-3 text-sm hover:bg-indigo-700 transition disabled:opacity-50"
+                        className="w-full bg-indigo-600 text-white font-medium rounded-xl py-3 text-sm hover:bg-indigo-700 transition disabled:opacity-50"
                     >
                         {status === "loading" ? "Registering..." : "Check In"}
                     </button>
